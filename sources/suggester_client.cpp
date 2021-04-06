@@ -9,7 +9,7 @@ const char text_str[] = "text";
 
 std::string suggester_client::request() {
   nlohmann::json req;
-  std::cout << "Enter a message: ";
+  std::cout << "Your message: ";
   std::string input;
   std::cin >> input;
   req[input_str] = input;
@@ -25,7 +25,7 @@ void suggester_client::parse_suggest(const std::string& response_json,
     throw std::runtime_error("Not json response");
   }
   if (!res[suggestions_str].empty())
-    out << " Maybe you wanted to type: " << std::endl;
+    out << " Maybe you wanted to type this word: " << std::endl;
   else
     out << " No suggestions for this input" << std::endl;
   size_t count = 1;
